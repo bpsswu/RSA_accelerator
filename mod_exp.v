@@ -5,9 +5,5 @@ module mod_exp (
 	output[31:0] r
 );
 	wire r;
-	
-	wire [31:0]pow_be;
-
-	assign pow_be = b**e;
-	assign r = pow_be % m;
+	assign r = (b**e) % m;
 endmodule
