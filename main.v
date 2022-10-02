@@ -1,4 +1,4 @@
-module mod_exp (
+module main (
 	input[31:0] b,
 	input[31:0] e,
 	input[31:0] m,
