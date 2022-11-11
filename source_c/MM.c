@@ -30,17 +30,23 @@ bool masking(uint64_t input, int n) {
 }
 
 uint64_t MM(uint64_t A, uint64_t B, uint64_t N) {
-    uint64_t Z = 0;
+    uint64_t Z = 0;\
+	
+	printf("\n");
     for (int i = 0; i < 32; i++)
 	{
         Z += masking(A, i) * B;
+		printf("%d : Z = %lu\n", 3 * i + 1, Z);	
         Z += masking(Z, 0) * N;
+		printf("%d : Z = %lu\n", 3 * i + 2, Z);	
         Z = Z >> 1;
-    }
+		printf("%d : Z = %lu\n", 3 * i + 3, Z);	
+    	printf("\n");
+	}
 
-	printf("Z = %lu\n", Z);	
-
-    while (Z > N)
+	printf("\n");
+    
+	while (Z > N)
 	{
 		count++;
         Z -= N;       
