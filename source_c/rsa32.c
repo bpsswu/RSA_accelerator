@@ -46,12 +46,12 @@ uint64_t RL_binary(uint64_t base, uint64_t exp, uint64_t N)
 int get_length(uint64_t input)
 {
     int MSB_index = -1;
-    if (input & 1){
+    if (input & 1) {
         MSB_index = 0;
     }
-    for (int i = 1; i < 64; i++){
+    for (int i = 1; i < 64; i++) {
         input = input >> 1;
-        if (input & 1){
+        if (input & 1) {
             MSB_index = i;
         }
     }
@@ -97,11 +97,18 @@ uint64_t long_div(uint64_t Msg, uint64_t N, int len)
 uint64_t mod_exp(uint64_t A, uint64_t B, uint64_t N, int len) 
 {
     uint64_t R = pow(2, len);
-    A = long_div(A, N, len);
-    B = long_div(B, N, len);
-    uint64_t mult = MM(A, B, N, len);
-    A = MM(mult, 1, N,len);
-    return A;
+	uint64_t Z1 = MM(A, R*R, N, len);
+	uint64_t Z2 = MM(B, R*R, N, len);
+	uint64_t Z3 = MM(Z1, Z2, N, len);
+	uint64_t Z4 = MM(Z3, 1, N, len);
+    
+	return Z4;
+	// A = long_div(A, N, len);
+    // B = long_div(B, N, len);
+    // uint64_t mult = MM(A, B, N, len);
+    // A = MM(mult, 1, N,len);
+    
+	// return A;
 }
 
 uint64_t MM(uint64_t A, uint64_t B, uint64_t N, int len)
