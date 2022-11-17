@@ -11,7 +11,7 @@ int count = 0;
 
 int main() {
     uint64_t A, B, N;
-    N = 123456789;
+    N = 100000;
     A = 67676767;
     B = 52525252;
 	
@@ -19,7 +19,6 @@ int main() {
 	printf("B = %lu\n", B);    
 	printf("N = %lu\n", N);
 	printf("MM(A, B, N) = %lu\n", MM(A, B, N));
-	printf("while loop count = %d\n", count);
     return 0;
 }
 
@@ -36,20 +35,21 @@ uint64_t MM(uint64_t A, uint64_t B, uint64_t N) {
     for (int i = 0; i < 32; i++)
 	{
         Z += masking(A, i) * B;
-		printf("%d : Z = %lu\n", 3 * i + 1, Z);	
+		// printf("%d : Z = %lu\n", 3 * i + 1, Z);	
         Z += masking(Z, 0) * N;
-		printf("%d : Z = %lu\n", 3 * i + 2, Z);	
+		// printf("%d : Z = %lu\n", 3 * i + 2, Z);	
         Z = Z >> 1;
-		printf("%d : Z = %lu\n", 3 * i + 3, Z);	
-    	printf("\n");
+		// printf("%d : Z = %lu\n", 3 * i + 3, Z);	
+    	// printf("\n");
 	}
 
-	printf("\n");
-    
 	while (Z > N)
 	{
 		count++;
         Z -= N;       
     }
-    return Z;
+	
+	printf("while loop count = %d\n", count);
+    
+	return Z;
 }

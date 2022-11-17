@@ -103,12 +103,15 @@ uint64_t mod_exp(uint64_t A, uint64_t B, uint64_t N, int len)
 	uint64_t Z4 = MM(Z3, 1, N, len);
     
 	return Z4;
-	// A = long_div(A, N, len);
-    // B = long_div(B, N, len);
-    // uint64_t mult = MM(A, B, N, len);
-    // A = MM(mult, 1, N,len);
+
+	/*
+	A = long_div(A, N, len);
+    B = long_div(B, N, len);
+    uint64_t mult = MM(A, B, N, len);
+    A = MM(mult, 1, N,len);
     
-	// return A;
+	return A;
+	*/
 }
 
 uint64_t MM(uint64_t A, uint64_t B, uint64_t N, int len)
