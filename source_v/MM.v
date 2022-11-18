@@ -1,10 +1,13 @@
-module MM(clk, rstn, A, B, N, Z);
+module MM(clk, rstn, en, A, B, N, Z, module_end);
 
-input clk, rstn;
+input clk, rstn, en;
 input [31:0] A, B, N;
 output [31:0] Z;
+output module_end;
 
 reg [31:0] Z;
+reg module_end;
+
 reg [7:0] count, index;
 reg [1:0] flag;
 
@@ -14,8 +17,9 @@ always @ (posedge clk or negedge rstn) begin
 		index <= 0;
 		flag <= 0;
 		count <= 0;
+		module_end <= 0;
 	end
-	else begin
+	else if (en) begin
 		if (count < 96) begin
 			if (flag == 0) begin
 				Z <= Z + A[index] * B;
@@ -36,8 +40,12 @@ always @ (posedge clk or negedge rstn) begin
 			end
 		end
 		else if (count == 96) begin
-			if (Z > N) begin
+			if (Z >= N) begin
 				Z <= Z - N;
+			end
+			else begin
+				count <= count + 1;
+				module_end <= 1;
 			end
 		end
 	end
