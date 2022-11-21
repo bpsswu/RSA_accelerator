@@ -11,6 +11,8 @@ uint64_t long_div(uint64_t Msg, uint64_t N, int len);
 uint64_t mod_exp(uint64_t A, uint64_t B, uint64_t N, int len);
 uint64_t MM(uint64_t A, uint64_t B, uint64_t N, int len);
 
+static int loop_cnt = 0;
+
 int main()
 {
     uint64_t M, N, e, d, C;
@@ -25,6 +27,8 @@ int main()
     
     M = RL_binary(C, d, N);
     printf("Plain_text    = %lu\n", M);
+
+	printf("while loop count(MM) : %d\n", loop_cnt);
 
     return 0;
 }
@@ -97,12 +101,19 @@ uint64_t long_div(uint64_t Msg, uint64_t N, int len)
 uint64_t mod_exp(uint64_t A, uint64_t B, uint64_t N, int len) 
 {
     uint64_t R = pow(2, len);
-	uint64_t Z1 = MM(A, R*R, N, len);
-	uint64_t Z2 = MM(B, R*R, N, len);
+	/*
+	uint64_t MF = MM(R-N, R-N, N, len);
+
+	uint64_t Z1 = MM(A, MF*MF, N, len);
+	uint64_t Z2 = MM(B, MF*MF, N, len);
 	uint64_t Z3 = MM(Z1, Z2, N, len);
 	uint64_t Z4 = MM(Z3, 1, N, len);
     
 	return Z4;
+	*/
+
+	uint64_t Z1 = MM(A, B, N, len);
+	return MM(Z1, R*R, N, len);
 
 	/*
 	A = long_div(A, N, len);
@@ -125,7 +136,8 @@ uint64_t MM(uint64_t A, uint64_t B, uint64_t N, int len)
     }
     while (Z > N)
 	{
-        Z -= N;       
+        Z -= N; 
+		loop_cnt++;     
     }
     return Z;
 }
