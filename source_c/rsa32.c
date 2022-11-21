@@ -34,8 +34,8 @@ uint64_t RL_binary(uint64_t base, uint64_t exp, uint64_t N)
     uint64_t r = 1;
     uint64_t y = base;
     int N_length = get_length(N);
-    for(int i = 0; i < 32; i++){
-        if(masking(exp,i)){
+    for(int i = 0; i < 32; i++) {
+        if(masking(exp,i)) {
             r = mod_exp(r, y, N, N_length);
         }
         y = mod_exp(y, y, N, N_length);
