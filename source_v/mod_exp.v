@@ -1,19 +1,31 @@
-module mod_exp(clk, rstn, en, A, B, N, len, out);
+/*
+	module name 	: mod_exp
+	@ input			: num_a, num_b, modulus
+	@ output		: me_out
+	@ description	: me_out = (num_a * num_b) % modulus
+*/
+module mod_exp(
+	clk, rstn, len, modulus);
 
-input clk, rstn, en;
-input [31:0] A, B, N, len;
-output [31:0] out;
 
-wire [31:0] out;
-wire [31:0] Z1, Z2, Z3;
-wire end1, end2, end3, end4;
+input clk, rstn;
+input [7:0] len;
+input [31:0] modulus;
 
-wire [31:0] R;
-assign R = 2 ** len;
 
-MM inst_0 (clk, rstn, en, A, R**2, N, Z1, end1);
-MM inst_1 (clk, rstn, en, B, R**2, N, Z2, end2);
-MM inst_2 (clk, rstn, end1 & end2, Z1, Z2, N, Z3, end3);
-MM inst_3 (clk, rstn, end3, Z3, 1, N, out, end4);
+wire [31:0] mm_1_out, mm_2_out;
+wire ld_1_end, ld_2_end, mm_1_end, mm_2_end;
+wire mm_1_start;
+
+assign mm_1_start = ld_1_end & ld_2_end; // 롱디비전이 어케 작동할지 몰라서 일단은 AND 연결해놓음. 더 복잡해질 수 있음.
+
+/*
+uint64_t Z1 = long_div(A, N, len);
+uint64_t Z2 = long_div(B, N, len);
+long_div ld_1 ();
+long_div ld_2 ();
+*/
+mont_mult mm_1 (clk, rstn, ld_2_end, len, /*num_1*/, /*num_2*/, modulus, mm_1_end, mm_1_out);
+mont_mult mm_2 (clk, rstn, mm_1_end, len, mm_1_out, 32'b1, modulus, mm_2_end, mm_2_out);
 
 endmodule
