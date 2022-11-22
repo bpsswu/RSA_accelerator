@@ -29,7 +29,7 @@ bool masking(uint64_t input, int n) {
 }
 
 uint64_t MM(uint64_t A, uint64_t B, uint64_t N) {
-    uint64_t Z = 0;\
+    uint64_t Z = 0;
 	
 	printf("\n");
     for (int i = 0; i < 32; i++)
