@@ -17,4 +17,4 @@ MM: MM.o
 	$(CC) -o $@ $< $(LDFLAGS)	
 
 clean:
-	rm -rf rsa32 *.o
+	rm -rf $(ALL) *.o

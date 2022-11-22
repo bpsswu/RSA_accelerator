@@ -1,5 +1,5 @@
 /*
-	module name : mont_mul
+	module name 	: mont_mul
 	@ input			: num_1, num_2, modulus
 	@ output		: mm_out
 	@ description	: mm_out = (num_1 * num_2 * R^-1) % modulus
