@@ -1,41 +1,66 @@
-module get_length(clk, rstn, en, in, length, module_end);
+/*
+	module name 	: get_length
+	@ input			: num_in
+	@ output		: len_out
+	@ description	: len_out = length of num_in (ex: 1001 => 4)
+*/
+module get_length(
+	clk, rstn, md_start, num_in, 
+	len_out, md_end);
 
-input clk, rstn, en;
-input [63:0] in;
-output [31:0] length;
-output module_end;
+input clk, rstn, md_start;
+input [63:0] num_in;
+output [7:0] len_out;
+output md_end;
 
-integer i;
+reg md_end;
+reg [7:0] len_out;
+reg [63:0] num;
+reg [7:0] i;
+reg enable;
+wire trig;
 
-reg module_end;
-reg [31:0] length;
-reg [63:0] data;
+assign trig = md_start | md_end;
+
+always @ (posedge trig or negedge rstn) begin
+	if (!rstn) begin
+		enable <= 0;
+	end
+	else begin
+		enable <= ~(enable);
+	end
+end
 
 always @ (posedge clk or negedge rstn) begin
-   if (!rstn) begin
-		length <= -1;
+	if (!rstn) begin
+		md_end <= 0;
+		len_out <= -1;
 		i <= 0;
-		data <= in;
-		module_end <= 0;
-   end
-   else if (en) begin
+		num <= 0;
+	end
+	else if (enable) begin
 		if (i == 0) begin
-			if (data & 1) begin
-				length <= 0;
+			num <= num_in;
+			if (num & 1) begin
+				len_out <= 0;
 				i <= i + 1;
 			end
 		end
 		else if (i < 64) begin
-			data <= data >> 1;
-			if (data & 1) begin
-				length <= i;
+			num <= (num >> 1);
+			if (num & 1) begin
+				len_out <= i;
 			end
 			i <= i + 1;
 		end
 		else if (i == 64) begin
-			module_end <= 1;
+			md_end <= 1;
 			i <= i + 1;
 		end
+	end
+	else if (i == 65) begin
+		md_end <= 0;
+		i <= i + 1;
 	end
 end
 
