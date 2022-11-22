@@ -9,7 +9,7 @@ int get_length(uint64_t input);
 bool masking(uint64_t input, int n);
 uint64_t long_div(uint64_t Msg, uint64_t N, int len);
 uint64_t mod_exp(uint64_t A, uint64_t B, uint64_t N, int len);
-uint64_t MM(uint64_t A, uint64_t B, uint64_t N, int len);
+uint64_t MM(uint64_t A, uint64_t B, uint64_t N);
 
 static int loop_cnt = 0;
 
@@ -118,16 +118,16 @@ uint64_t mod_exp(uint64_t A, uint64_t B, uint64_t N, int len)
 	
 	uint64_t Z1 = long_div(A, N, len);
     uint64_t Z2 = long_div(B, N, len);
-    uint64_t Z3 = MM(Z1, Z2, N, len);
-    uint64_t Z4 = MM(Z3, 1, N,len);
+    uint64_t Z3 = MM(Z1, Z2, N);
+    uint64_t Z4 = MM(Z3, 1, N);
     
 	return Z4;
 }
 
-uint64_t MM(uint64_t A, uint64_t B, uint64_t N, int len)
+uint64_t MM(uint64_t A, uint64_t B, uint64_t N)
 {
     uint64_t Z = 0;
-    for(int i = 0; i < len; i++)
+    for(int i = 0; i < 32; i++)
 	{
         Z += masking(A, i) * B;
         Z += masking(Z, 0) * N;
