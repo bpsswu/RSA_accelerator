@@ -5,23 +5,23 @@
 	@ description	: mm_out = (num_1 * num_2 * R^-1) % modulus
 */
 module mont_mult(
-	clk, rstn, sig_start, len, num_1, num_2, modulus,
-	module_end, mm_out);
+	clk, rstn, md_start, len, num_1, num_2, modulus,
+	md_end, mm_out);
 
-input clk, rstn, sig_start;
+input clk, rstn, md_start;
 input [7:0] len;
 input [31:0] num_1, num_2, modulus;
-output module_end;
+output md_end;
 output [31:0] mm_out;
 
-reg module_end;
+reg md_end;
 reg [31:0] mm_out;
 reg [7:0] count, index;
 reg [1:0] flag;
 reg enable;
 wire trig;
 
-assign trig = sig_start | module_end;
+assign trig = md_start | md_end;
 
 always @ (posedge trig or negedge rstn) begin
 	if (!rstn) begin
@@ -34,7 +34,7 @@ end
 
 always @ (posedge clk or negedge rstn) begin
 	if (!rstn) begin
-		module_end <= 0;
+		md_end <= 0;
 		mm_out <= 0;
 		count <= 0;
 		index <= 0;
@@ -67,9 +67,13 @@ always @ (posedge clk or negedge rstn) begin
 			end
 			else begin
 				count <= count + 1;
-				module_end <= 1;
+				md_end <= 1;
 			end
 		end
+	end
+	else if (count == len*3 + 1) begin
+		count <= count + 1;
+		md_end <= 0;
 	end
 end
 
