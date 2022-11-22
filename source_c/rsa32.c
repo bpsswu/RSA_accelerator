@@ -20,6 +20,9 @@ int main()
     e = 17;
     d = 75431153;
     M = 52525252;
+
+	printf("\nlength of N = %d\n\n", get_length(N));
+
     printf("Input message = %lu\n", M);
     
     C = RL_binary(M, e, N);
