@@ -39,12 +39,17 @@ always @ (posedge clk or negedge rstn) begin
 		num <= 0;
 	end
 	else if (enable) begin
+		
+		if (md_start) begin
+			i <= 0;
+		end
+	
 		if (i == 0) begin
 			num <= num_in;
 			if (num & 1) begin
 				len_out <= 0;
-				i <= i + 1;
 			end
+			i <= i + 1;
 		end
 		else if (i < 64) begin
 			num <= (num >> 1);

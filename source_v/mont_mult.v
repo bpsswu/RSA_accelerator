@@ -41,6 +41,11 @@ always @ (posedge clk or negedge rstn) begin
 		flag <= 0;
 	end
 	else if (enable) begin
+
+		if (md_start) begin
+			count <= 0;
+		end
+
 		if (count < len*3) begin
 			if (flag == 0) begin
 				mm_out <= mm_out + num_1[index] * num_2;
