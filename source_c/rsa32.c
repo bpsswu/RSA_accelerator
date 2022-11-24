@@ -21,8 +21,6 @@ int main()
     d = 75431153;
     M = 52525252;
 
-	printf("\nlength of N = %d\n\n", get_length(N));
-
     printf("Input message = %lu\n", M);
     
     C = RL_binary(M, e, N);
@@ -32,7 +30,7 @@ int main()
     printf("Plain_text    = %lu\n", M);
 
 	printf("while loop count(MM) : %d\n", loop_cnt);
-
+	
     return 0;
 }
 
@@ -103,7 +101,7 @@ uint64_t long_div(uint64_t Msg, uint64_t N, int len)
 
 uint64_t mod_exp(uint64_t A, uint64_t B, uint64_t N, int len) 
 {
-    uint64_t R = pow(2, len);
+    // uint64_t R = pow(2, len);
 	/*
 	uint64_t MF = MM(R-N, R-N, N, len);
 
