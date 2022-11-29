@@ -1,29 +1,33 @@
 /*
 	module name 	: IO
-	@ input			: rstn, md_start (Push Button)
+	@ input			: rstn, md_start_push (Push Button)
 	@ output		: good(green led), bad(red led)
 	@ description	: encryption test
 */
 module IO(
 	clk, rstn, md_start_push,
-	good, bad);
+	debug1, debug2, debug3, good, bad);
 	
 input clk, rstn, md_start_push;
-output good, bad;
+output debug1, debug2, debug3, good, bad;
 
 reg good, bad;
 reg [31:0] base, exp, modulus;
-wire me_2_end;
+wire rsa_end;
 wire [31:0] r;
 wire md_start;
+wire debug1, debug2, debug3;
+assign debug1 = rstn;
+assign debug2 = md_start_push;
+assign debug3 = ~md_start_push;
 
 ltp inst_btn (
-	clk, rstn, md_start_push,
+	clk, rstn, debug3,
 	md_start);
 
 RL_binary inst_rsa (
 	clk, rstn, md_start, base, exp, modulus,
-	me_2_end, r);
+	rsa_end, r);
 
 // Value Initialization
 always @ (posedge clk or negedge rstn) begin
@@ -46,7 +50,7 @@ always @ (posedge clk or negedge rstn) begin
 	end
 	else begin
 		
-		if (me_2_end) begin
+		if (rsa_end) begin
 			if (r == 8243011) begin
 				good <= 1;
 			end

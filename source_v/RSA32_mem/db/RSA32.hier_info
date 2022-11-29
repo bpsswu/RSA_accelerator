@@ -1,7 +1,11 @@
 |IO
 clk => clk.IN2
 rstn => rstn.IN2
-md_start_push => md_start_push.IN1
+md_start_push => debug2.DATAIN
+md_start_push => debug3.IN1
+debug1 <= rstn.DB_MAX_OUTPUT_PORT_TYPE
+debug2 <= md_start_push.DB_MAX_OUTPUT_PORT_TYPE
+debug3 <= debug3.DB_MAX_OUTPUT_PORT_TYPE
 good <= good~reg0.DB_MAX_OUTPUT_PORT_TYPE
 bad <= bad~reg0.DB_MAX_OUTPUT_PORT_TYPE
 

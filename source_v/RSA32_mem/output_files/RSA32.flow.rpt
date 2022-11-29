@@ -1,5 +1,5 @@
 Flow report for RSA32
-Tue Nov 29 15:07:47 2022
+Tue Nov 29 16:21:22 2022
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,18 +40,18 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Tue Nov 29 15:07:47 2022           ;
+; Flow Status                        ; Successful - Tue Nov 29 16:21:22 2022           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; RSA32                                           ;
 ; Top-level Entity Name              ; IO                                              ;
 ; Family                             ; Cyclone II                                      ;
 ; Device                             ; EP2C35F672C6                                    ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 3,038 / 33,216 ( 9 % )                          ;
-;     Total combinational functions  ; 3,023 / 33,216 ( 9 % )                          ;
+; Total logic elements               ; 3,047 / 33,216 ( 9 % )                          ;
+;     Total combinational functions  ; 3,024 / 33,216 ( 9 % )                          ;
 ;     Dedicated logic registers      ; 858 / 33,216 ( 3 % )                            ;
 ; Total registers                    ; 858                                             ;
-; Total pins                         ; 5 / 475 ( 1 % )                                 ;
+; Total pins                         ; 8 / 475 ( 2 % )                                 ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0 / 483,840 ( 0 % )                             ;
 ; Embedded Multiplier 9-bit elements ; 24 / 70 ( 34 % )                                ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/29/2022 15:07:23 ;
+; Start date & time ; 11/29/2022 16:20:57 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RSA32               ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +--------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +--------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 238300921506750.166970204315504       ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                ; 238300921506750.166970645721112       ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; IO_tb          ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; IO_tb                                 ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --          ; eda_simulation ;
@@ -102,12 +102,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:03     ; 1.0                     ; 4613 MB             ; 00:00:03                           ;
-; Fitter                    ; 00:00:14     ; 1.0                     ; 4920 MB             ; 00:00:14                           ;
-; Assembler                 ; 00:00:01     ; 1.0                     ; 4585 MB             ; 00:00:01                           ;
+; Analysis & Synthesis      ; 00:00:03     ; 1.0                     ; 4606 MB             ; 00:00:03                           ;
+; Fitter                    ; 00:00:15     ; 1.0                     ; 4917 MB             ; 00:00:14                           ;
+; Assembler                 ; 00:00:01     ; 1.0                     ; 4577 MB             ; 00:00:01                           ;
 ; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 4598 MB             ; 00:00:01                           ;
 ; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4557 MB             ; 00:00:01                           ;
-; Total                     ; 00:00:20     ; --                      ; --                  ; 00:00:20                           ;
+; Total                     ; 00:00:21     ; --                      ; --                  ; 00:00:20                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

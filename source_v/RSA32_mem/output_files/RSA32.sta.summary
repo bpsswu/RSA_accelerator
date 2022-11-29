@@ -3,23 +3,27 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow Model Setup 'clk'
-Slack : -16.259
-TNS   : -7755.672
-
-Type  : Slow Model Setup 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_1|get_length:gl_ld|md_end'
-Slack : -0.579
-TNS   : -0.992
-
-Type  : Slow Model Setup 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_2|get_length:gl_ld|md_end'
-Slack : -0.416
-TNS   : -0.416
-
-Type  : Slow Model Setup 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_2|get_length:gl_ld|md_end'
-Slack : -0.301
-TNS   : -1.013
+Slack : -16.432
+TNS   : -7845.909
 
 Type  : Slow Model Setup 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_1|get_length:gl_ld|md_end'
-Slack : 0.122
+Slack : -0.254
+TNS   : -0.254
+
+Type  : Slow Model Setup 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_2|get_length:gl_ld|md_end'
+Slack : -0.140
+TNS   : -0.140
+
+Type  : Slow Model Setup 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_1|get_length:gl_ld|md_end'
+Slack : -0.046
+TNS   : -0.238
+
+Type  : Slow Model Setup 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_2|get_length:gl_ld|md_end'
+Slack : 0.328
+TNS   : 0.000
+
+Type  : Slow Model Setup 'RL_binary:inst_rsa|me_2_start'
+Slack : 0.336
 TNS   : 0.000
 
 Type  : Slow Model Setup 'RL_binary:inst_rsa|get_length:gl_RL|md_end'
@@ -27,10 +31,6 @@ Slack : 0.379
 TNS   : 0.000
 
 Type  : Slow Model Setup 'RL_binary:inst_rsa|me_1_start'
-Slack : 0.379
-TNS   : 0.000
-
-Type  : Slow Model Setup 'RL_binary:inst_rsa|me_2_start'
 Slack : 0.379
 TNS   : 0.000
 
@@ -43,38 +43,38 @@ Slack : 0.379
 TNS   : 0.000
 
 Type  : Slow Model Hold 'clk'
-Slack : -2.556
-TNS   : -121.467
-
-Type  : Slow Model Hold 'RL_binary:inst_rsa|me_1_start'
-Slack : -0.567
-TNS   : -0.971
-
-Type  : Slow Model Hold 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_2|get_length:gl_ld|md_end'
-Slack : -0.250
-TNS   : -1.077
-
-Type  : Slow Model Hold 'RL_binary:inst_rsa|me_2_start'
-Slack : -0.187
-TNS   : -0.187
+Slack : -2.557
+TNS   : -114.911
 
 Type  : Slow Model Hold 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_1|get_length:gl_ld|md_end'
-Slack : 0.049
+Slack : -0.275
+TNS   : -1.360
+
+Type  : Slow Model Hold 'RL_binary:inst_rsa|me_2_start'
+Slack : -0.242
+TNS   : -0.242
+
+Type  : Slow Model Hold 'RL_binary:inst_rsa|me_1_start'
+Slack : -0.128
+TNS   : -0.136
+
+Type  : Slow Model Hold 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_2|get_length:gl_ld|md_end'
+Slack : 0.096
 TNS   : 0.000
 
-Type  : Slow Model Hold 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_1|get_length:gl_ld|md_end'
-Slack : 0.359
+Type  : Slow Model Hold 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_2|get_length:gl_ld|md_end'
+Slack : 0.231
 TNS   : 0.000
 
 Type  : Slow Model Hold 'RL_binary:inst_rsa|get_length:gl_RL|md_end'
 Slack : 0.391
 TNS   : 0.000
 
-Type  : Slow Model Hold 'RL_binary:inst_rsa|mod_exp:me_1|mont_mult:mm_1|md_end'
+Type  : Slow Model Hold 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_1|get_length:gl_ld|md_end'
 Slack : 0.391
 TNS   : 0.000
 
-Type  : Slow Model Hold 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_2|get_length:gl_ld|md_end'
+Type  : Slow Model Hold 'RL_binary:inst_rsa|mod_exp:me_1|mont_mult:mm_1|md_end'
 Slack : 0.391
 TNS   : 0.000
 
@@ -123,23 +123,23 @@ Slack : -0.500
 TNS   : -1.000
 
 Type  : Fast Model Setup 'clk'
-Slack : -6.123
-TNS   : -2650.827
+Slack : -6.205
+TNS   : -2703.340
 
-Type  : Fast Model Setup 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_1|get_length:gl_ld|md_end'
-Slack : 0.213
+Type  : Fast Model Setup 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_1|get_length:gl_ld|md_end'
+Slack : 0.375
 TNS   : 0.000
 
 Type  : Fast Model Setup 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_2|get_length:gl_ld|md_end'
-Slack : 0.304
+Slack : 0.408
+TNS   : 0.000
+
+Type  : Fast Model Setup 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_1|get_length:gl_ld|md_end'
+Slack : 0.450
 TNS   : 0.000
 
 Type  : Fast Model Setup 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_2|get_length:gl_ld|md_end'
-Slack : 0.321
-TNS   : 0.000
-
-Type  : Fast Model Setup 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_1|get_length:gl_ld|md_end'
-Slack : 0.539
+Slack : 0.650
 TNS   : 0.000
 
 Type  : Fast Model Setup 'RL_binary:inst_rsa|get_length:gl_RL|md_end'
@@ -163,23 +163,27 @@ Slack : 0.665
 TNS   : 0.000
 
 Type  : Fast Model Hold 'clk'
-Slack : -1.597
-TNS   : -124.625
-
-Type  : Fast Model Hold 'RL_binary:inst_rsa|me_1_start'
-Slack : -0.237
-TNS   : -0.383
-
-Type  : Fast Model Hold 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_2|get_length:gl_ld|md_end'
-Slack : -0.091
-TNS   : -0.439
+Slack : -1.598
+TNS   : -118.980
 
 Type  : Fast Model Hold 'RL_binary:inst_rsa|me_2_start'
-Slack : -0.050
-TNS   : -0.050
+Slack : -0.075
+TNS   : -0.075
 
 Type  : Fast Model Hold 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_1|get_length:gl_ld|md_end'
-Slack : 0.089
+Slack : -0.046
+TNS   : -0.206
+
+Type  : Fast Model Hold 'RL_binary:inst_rsa|me_1_start'
+Slack : -0.042
+TNS   : -0.042
+
+Type  : Fast Model Hold 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_2|get_length:gl_ld|md_end'
+Slack : 0.088
+TNS   : 0.000
+
+Type  : Fast Model Hold 'RL_binary:inst_rsa|mod_exp:me_1|long_div:ld_2|get_length:gl_ld|md_end'
+Slack : 0.184
 TNS   : 0.000
 
 Type  : Fast Model Hold 'RL_binary:inst_rsa|get_length:gl_RL|md_end'
@@ -191,10 +195,6 @@ Slack : 0.215
 TNS   : 0.000
 
 Type  : Fast Model Hold 'RL_binary:inst_rsa|mod_exp:me_1|mont_mult:mm_1|md_end'
-Slack : 0.215
-TNS   : 0.000
-
-Type  : Fast Model Hold 'RL_binary:inst_rsa|mod_exp:me_2|long_div:ld_2|get_length:gl_ld|md_end'
 Slack : 0.215
 TNS   : 0.000
 

@@ -61,7 +61,6 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_location_assignment PIN_G26 -to rstn
-set_location_assignment PIN_N23 -to md_start
 set_location_assignment PIN_N2 -to clk
 set_global_assignment -name VERILOG_FILE IO.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
@@ -73,4 +72,10 @@ set_global_assignment -name EDA_TEST_BENCH_NAME IO_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id IO_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME IO_tb -section_id IO_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE IO_tb.v -section_id IO_tb
+set_location_assignment PIN_N23 -to md_start_push
+set_location_assignment PIN_AF23 -to bad
+set_location_assignment PIN_AE23 -to good
+set_location_assignment PIN_AF22 -to debug2
+set_location_assignment PIN_AE22 -to debug1
+set_location_assignment PIN_W19 -to debug3
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
