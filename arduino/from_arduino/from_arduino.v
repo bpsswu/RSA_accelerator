@@ -1,3 +1,6 @@
+/*
+	(FPGA board <-> Arduino board) Interface Test
+*/
 module from_arduino (
 	clk, rstn, data, write, oe,
 	rstn_led, write_led, oe_led, comp1, comp2, comp3, data_out_led);

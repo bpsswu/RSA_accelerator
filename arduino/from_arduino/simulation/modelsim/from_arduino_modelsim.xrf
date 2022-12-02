@@ -1,6 +1,6 @@
 vendor_name = ModelSim
-source_file = 1, C:/Users/bpssw/Desktop/Quartus-II/from_arduino/from_arduino.v
-source_file = 1, C:/Users/bpssw/Desktop/Quartus-II/from_arduino/db/from_arduino.cbx.xml
+source_file = 1, C:/Users/BaekSeungWook/Desktop/BaekSW/RSA_verilog/arduino/from_arduino/from_arduino.v
+source_file = 1, C:/Users/BaekSeungWook/Desktop/BaekSW/RSA_verilog/arduino/from_arduino/db/from_arduino.cbx.xml
 design_name = from_arduino
 instance = comp, \register_1[24] , register_1[24], from_arduino, 1
 instance = comp, \register_1[22] , register_1[22], from_arduino, 1
