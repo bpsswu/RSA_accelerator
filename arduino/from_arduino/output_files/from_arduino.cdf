@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP2C35F672) Path("C:/Users/bpssw/Desktop/Quartus-II/from_arduino/output_files/") File("from_arduino.sof") MfrSpec(OpMask(1));
+		Device PartName(EP2C35F672) Path("C:/Users/BaekSeungWook/Desktop/BaekSW/RSA_verilog/arduino/from_arduino/output_files/") File("from_arduino.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

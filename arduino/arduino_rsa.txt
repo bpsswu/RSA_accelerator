@@ -54,7 +54,7 @@ void loop() {
   if (state == IDLE) {
     if (!flag) {
       Serial.println("[32bit RSA program]");
-      Serial.println("Message : 0x0321_78C4");
+      Serial.println("Message : 0x032178C4");
       Serial.println("encryption start");
 
       // Start Time Measurement
@@ -90,7 +90,9 @@ void loop() {
     digitalWrite(OE, HIGH);
     Serial.println("encryption end");
     Serial.print("Cipher Text : ");
-    Serial.println(pin_to_num());
+    Serial.print("0x");
+    Serial.println(pin_to_num(), HEX);
+    //digitalWrite(OE, LOW);
   }
 }
 
@@ -350,17 +352,24 @@ void set_pin_out() {
 }
 
 // read pin(22-53) value and convert it to decimal number
-int pin_to_num() {
-  int result = 0;
-  int arr[32] = {
+uint32_t pin_to_num() {
+  uint32_t result = 0;
+  char arr[32] = {
     0,
   };
   for (int i = 0; i < 32; i++) {
     arr[i] = digitalRead(22 + i);
     if (arr[i]) {
-      result += pow(2, i);
+      result += power(2, i);
     }
   }
+  return result;
+}
 
+uint32_t power(int base, int exp) {
+  uint32_t result = 1;
+  for (int i = 0; i < exp; i++) {
+    result *= base;
+  }
   return result;
 }
