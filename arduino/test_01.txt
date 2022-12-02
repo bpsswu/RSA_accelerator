@@ -1,12 +1,17 @@
-#define IDLE      0
-#define SET_BASE  1
-#define SET_EXP   2
-#define SET_N     3
-#define SAVE      21
+#define IDLE 0
+#define SET_BASE 1
+#define SET_EXP 2
+#define SET_N 3
+#define GET_R 4
+#define OE 20
+#define WRITE 21
+
 int state = IDLE;
+int flag = 0;
 
 void setup() {
-  pinMode(SAVE, OUTPUT);
+  pinMode(OE, OUTPUT);
+  pinMode(WRITE, OUTPUT);
   pinMode(22, OUTPUT);
   pinMode(23, OUTPUT);
   pinMode(24, OUTPUT);
@@ -45,218 +50,317 @@ void setup() {
 }
 
 void loop() {
-  
-  digitalWrite(SAVE, HIGH);
-  int flag = 0;
-  Serial.println("[32bit RSA program]");
-  Serial.println("Message : 0x0321_78C4");
 
   if (state == IDLE) {
     if (!flag) {
+      Serial.println("[32bit RSA program]");
+      Serial.println("Message : 0x0321_78C4");
       Serial.println("encryption start");
+
+      // Start Time Measurement
+
       state = SET_BASE;
       flag++;
-
-      delay(2000);  
+      set_pin_out();
+      digitalWrite(OE, LOW);
+      delay(100);
     }
-  }
-  else if (state == SET_BASE) {
-    set_h0321_78C4();
+  } else if (state == SET_BASE) {
     state = SET_EXP;
-    digitalWrite(SAVE, LOW);
-    digitalWrite(SAVE, HIGH);
-    
-    delay(2000);
-  }
-  else if (state == SET_EXP) {
+    set_h0321_78C4();
+    delay(100);
+    write_to_FPGA();
+    delay(100);
+  } else if (state == SET_EXP) {
+    state = SET_N;
     set_h0000_0011();
-    state = SET_N;
-    digitalWrite(SAVE, LOW);
-    digitalWrite(SAVE, HIGH);
-    
-    delay(2000);
-  }
-  else if (state == SET_N) {
+    delay(100);
+    write_to_FPGA();
+    delay(100);
+  } else if (state == SET_N) {
+    state = GET_R;
     set_h07A5_0679();
-    state = SET_N;
-    digitalWrite(SAVE, LOW);
-    digitalWrite(SAVE, HIGH);
-    
-    delay(2000);
+    delay(100);
+    write_to_FPGA();
+    delay(100);
+  } else if (state == GET_R) {
+    state = IDLE;
+    write_to_FPGA();
+    set_pin_in();
+    digitalWrite(OE, HIGH);
+    Serial.println("encryption end");
+    Serial.print("Cipher Text : ");
+    Serial.println(pin_to_num());
   }
-  
+}
+
+void write_to_FPGA() {
+  digitalWrite(WRITE, HIGH);
+  delay(100);
+  digitalWrite(WRITE, LOW);
 }
 
 // 0x0321_78C4 = 52525252
 // 0000 0011 0010 0001 0111 1000 1100 0100
 void set_h0321_78C4() {
-  digitalWrite(22, LOW); //  0
-  digitalWrite(23, LOW); //  1
-  digitalWrite(24, HIGH); //  2
-  digitalWrite(25, LOW); //  3
+  digitalWrite(22, LOW);   //  0
+  digitalWrite(23, LOW);   //  1
+  digitalWrite(24, HIGH);  //  2
+  digitalWrite(25, LOW);   //  3
 
-  digitalWrite(26, LOW); //  4
-  digitalWrite(27, LOW); //  5
-  digitalWrite(28, HIGH); //  6
-  digitalWrite(29, HIGH); //  7
+  digitalWrite(26, LOW);   //  4
+  digitalWrite(27, LOW);   //  5
+  digitalWrite(28, HIGH);  //  6
+  digitalWrite(29, HIGH);  //  7
 
-  digitalWrite(30, LOW); // 8
-  digitalWrite(31, LOW); // 9
-  digitalWrite(32, LOW); // 10
-  digitalWrite(33, HIGH); // 11
+  digitalWrite(30, LOW);   // 8
+  digitalWrite(31, LOW);   // 9
+  digitalWrite(32, LOW);   // 10
+  digitalWrite(33, HIGH);  // 11
 
-  digitalWrite(34, HIGH); // 12
-  digitalWrite(35, HIGH); // 13
-  digitalWrite(36, HIGH); // 14
-  digitalWrite(37, LOW); // 15
+  digitalWrite(34, HIGH);  // 12
+  digitalWrite(35, HIGH);  // 13
+  digitalWrite(36, HIGH);  // 14
+  digitalWrite(37, LOW);   // 15
 
-  digitalWrite(38, HIGH); // 16 
-  digitalWrite(39, LOW); // 17
-  digitalWrite(40, LOW); // 18
-  digitalWrite(41, LOW); // 19
+  digitalWrite(38, HIGH);  // 16
+  digitalWrite(39, LOW);   // 17
+  digitalWrite(40, LOW);   // 18
+  digitalWrite(41, LOW);   // 19
 
-  digitalWrite(42, LOW); // 20
-  digitalWrite(43, HIGH); // 21
-  digitalWrite(44, LOW); // 22
-  digitalWrite(45, LOW); // 23
+  digitalWrite(42, LOW);   // 20
+  digitalWrite(43, HIGH);  // 21
+  digitalWrite(44, LOW);   // 22
+  digitalWrite(45, LOW);   // 23
 
-  digitalWrite(46, HIGH); // 24
-  digitalWrite(47, HIGH); // 25
-  digitalWrite(48, LOW); // 26
-  digitalWrite(49, LOW); // 27
-  
-  digitalWrite(50, LOW); // 28
-  digitalWrite(51, LOW); // 29
-  digitalWrite(52, LOW); // 30
-  digitalWrite(53, LOW); // 31
+  digitalWrite(46, HIGH);  // 24
+  digitalWrite(47, HIGH);  // 25
+  digitalWrite(48, LOW);   // 26
+  digitalWrite(49, LOW);   // 27
+
+  digitalWrite(50, LOW);  // 28
+  digitalWrite(51, LOW);  // 29
+  digitalWrite(52, LOW);  // 30
+  digitalWrite(53, LOW);  // 31
 }
 
 // 0x0000_0011 = 17
 // 0000 0000 0000 0000 0000 0000 0001 0001
 void set_h0000_0011() {
-  digitalWrite(22, HIGH); //  0
-  digitalWrite(23, LOW); //  1
-  digitalWrite(24, LOW); //  2
-  digitalWrite(25, LOW); //  3
+  digitalWrite(22, HIGH);  //  0
+  digitalWrite(23, LOW);   //  1
+  digitalWrite(24, LOW);   //  2
+  digitalWrite(25, LOW);   //  3
 
-  digitalWrite(26, HIGH); //  4
-  digitalWrite(27, LOW); //  5
-  digitalWrite(28, LOW); //  6
-  digitalWrite(29, LOW); //  7
+  digitalWrite(26, HIGH);  //  4
+  digitalWrite(27, LOW);   //  5
+  digitalWrite(28, LOW);   //  6
+  digitalWrite(29, LOW);   //  7
 
-  digitalWrite(30, LOW); // 8
-  digitalWrite(31, LOW); // 9
-  digitalWrite(32, LOW); // 10
-  digitalWrite(33, LOW); // 11
+  digitalWrite(30, LOW);  // 8
+  digitalWrite(31, LOW);  // 9
+  digitalWrite(32, LOW);  // 10
+  digitalWrite(33, LOW);  // 11
 
-  digitalWrite(34, LOW); // 12
-  digitalWrite(35, LOW); // 13
-  digitalWrite(36, LOW); // 14
-  digitalWrite(37, LOW); // 15
+  digitalWrite(34, LOW);  // 12
+  digitalWrite(35, LOW);  // 13
+  digitalWrite(36, LOW);  // 14
+  digitalWrite(37, LOW);  // 15
 
-  digitalWrite(38, LOW); // 16 
-  digitalWrite(39, LOW); // 17
-  digitalWrite(40, LOW); // 18
-  digitalWrite(41, LOW); // 19
+  digitalWrite(38, LOW);  // 16
+  digitalWrite(39, LOW);  // 17
+  digitalWrite(40, LOW);  // 18
+  digitalWrite(41, LOW);  // 19
 
-  digitalWrite(42, LOW); // 20
-  digitalWrite(43, LOW); // 21
-  digitalWrite(44, LOW); // 22
-  digitalWrite(45, LOW); // 23
+  digitalWrite(42, LOW);  // 20
+  digitalWrite(43, LOW);  // 21
+  digitalWrite(44, LOW);  // 22
+  digitalWrite(45, LOW);  // 23
 
-  digitalWrite(46, LOW); // 24
-  digitalWrite(47, LOW); // 25
-  digitalWrite(48, LOW); // 26
-  digitalWrite(49, LOW); // 27
-  
-  digitalWrite(50, LOW); // 28
-  digitalWrite(51, LOW); // 29
-  digitalWrite(52, LOW); // 30
-  digitalWrite(53, LOW); // 31
+  digitalWrite(46, LOW);  // 24
+  digitalWrite(47, LOW);  // 25
+  digitalWrite(48, LOW);  // 26
+  digitalWrite(49, LOW);  // 27
+
+  digitalWrite(50, LOW);  // 28
+  digitalWrite(51, LOW);  // 29
+  digitalWrite(52, LOW);  // 30
+  digitalWrite(53, LOW);  // 31
 }
 
-//0x07A5_0679 = 128255609
+// 0x07A5_0679 = 128255609
 // 0000 0111 1010 0101 0000 0110 0111 1001
 void set_h07A5_0679() {
-  digitalWrite(22, HIGH); //  0
-  digitalWrite(23, LOW); //  1
-  digitalWrite(24, LOW); //  2
-  digitalWrite(25, HIGH); //  3
+  digitalWrite(22, HIGH);  //  0
+  digitalWrite(23, LOW);   //  1
+  digitalWrite(24, LOW);   //  2
+  digitalWrite(25, HIGH);  //  3
 
-  digitalWrite(26, HIGH); //  4
-  digitalWrite(27, HIGH); //  5
-  digitalWrite(28, HIGH); //  6
-  digitalWrite(29, LOW); //  7
+  digitalWrite(26, HIGH);  //  4
+  digitalWrite(27, HIGH);  //  5
+  digitalWrite(28, HIGH);  //  6
+  digitalWrite(29, LOW);   //  7
 
-  digitalWrite(30, LOW); // 8
-  digitalWrite(31, HIGH); // 9
-  digitalWrite(32, HIGH); // 10
-  digitalWrite(33, LOW); // 11
+  digitalWrite(30, LOW);   // 8
+  digitalWrite(31, HIGH);  // 9
+  digitalWrite(32, HIGH);  // 10
+  digitalWrite(33, LOW);   // 11
 
-  digitalWrite(34, LOW); // 12
-  digitalWrite(35, LOW); // 13
-  digitalWrite(36, LOW); // 14
-  digitalWrite(37, LOW); // 15
+  digitalWrite(34, LOW);  // 12
+  digitalWrite(35, LOW);  // 13
+  digitalWrite(36, LOW);  // 14
+  digitalWrite(37, LOW);  // 15
 
-  digitalWrite(38, HIGH); // 16 
-  digitalWrite(39, LOW); // 17
-  digitalWrite(40, HIGH); // 18
-  digitalWrite(41, LOW); // 19
+  digitalWrite(38, HIGH);  // 16
+  digitalWrite(39, LOW);   // 17
+  digitalWrite(40, HIGH);  // 18
+  digitalWrite(41, LOW);   // 19
 
-  digitalWrite(42, LOW); // 20
-  digitalWrite(43, HIGH); // 21
-  digitalWrite(44, LOW); // 22
-  digitalWrite(45, HIGH); // 23
+  digitalWrite(42, LOW);   // 20
+  digitalWrite(43, HIGH);  // 21
+  digitalWrite(44, LOW);   // 22
+  digitalWrite(45, HIGH);  // 23
 
-  digitalWrite(46, LOW); // 24
-  digitalWrite(47, HIGH); // 25
-  digitalWrite(48, HIGH); // 26
-  digitalWrite(49, HIGH); // 27
-  
-  digitalWrite(50, LOW); // 28
-  digitalWrite(51, LOW); // 29
-  digitalWrite(52, LOW); // 30
-  digitalWrite(53, LOW); // 31
+  digitalWrite(46, HIGH);  // 24
+  digitalWrite(47, HIGH);  // 25
+  digitalWrite(48, HIGH);  // 26
+  digitalWrite(49, LOW);   // 27
+
+  digitalWrite(50, LOW);  // 28
+  digitalWrite(51, LOW);  // 29
+  digitalWrite(52, LOW);  // 30
+  digitalWrite(53, LOW);  // 31
 }
 
+// 0x0000_0000
 void set_zero() {
-  digitalWrite(22, LOW); //  0
-  digitalWrite(23, LOW); //  1
-  digitalWrite(24, LOW); //  2
-  digitalWrite(25, LOW); //  3
+  digitalWrite(22, LOW);  //  0
+  digitalWrite(23, LOW);  //  1
+  digitalWrite(24, LOW);  //  2
+  digitalWrite(25, LOW);  //  3
 
-  digitalWrite(26, LOW); //  4
-  digitalWrite(27, LOW); //  5
-  digitalWrite(28, LOW); //  6
-  digitalWrite(29, LOW); //  7
+  digitalWrite(26, LOW);  //  4
+  digitalWrite(27, LOW);  //  5
+  digitalWrite(28, LOW);  //  6
+  digitalWrite(29, LOW);  //  7
 
-  digitalWrite(30, LOW); // 8
-  digitalWrite(31, LOW); // 9
-  digitalWrite(32, LOW); // 10
-  digitalWrite(33, LOW); // 11
+  digitalWrite(30, LOW);  // 8
+  digitalWrite(31, LOW);  // 9
+  digitalWrite(32, LOW);  // 10
+  digitalWrite(33, LOW);  // 11
 
-  digitalWrite(34, LOW); // 12
-  digitalWrite(35, LOW); // 13
-  digitalWrite(36, LOW); // 14
-  digitalWrite(37, LOW); // 15
+  digitalWrite(34, LOW);  // 12
+  digitalWrite(35, LOW);  // 13
+  digitalWrite(36, LOW);  // 14
+  digitalWrite(37, LOW);  // 15
 
-  digitalWrite(38, LOW); // 16 
-  digitalWrite(39, LOW); // 17
-  digitalWrite(40, LOW); // 18
-  digitalWrite(41, LOW); // 19
+  digitalWrite(38, LOW);  // 16
+  digitalWrite(39, LOW);  // 17
+  digitalWrite(40, LOW);  // 18
+  digitalWrite(41, LOW);  // 19
 
-  digitalWrite(42, LOW); // 20
-  digitalWrite(43, LOW); // 21
-  digitalWrite(44, LOW); // 22
-  digitalWrite(45, LOW); // 23
+  digitalWrite(42, LOW);  // 20
+  digitalWrite(43, LOW);  // 21
+  digitalWrite(44, LOW);  // 22
+  digitalWrite(45, LOW);  // 23
 
-  digitalWrite(46, LOW); // 24
-  digitalWrite(47, LOW); // 25
-  digitalWrite(48, LOW); // 26
-  digitalWrite(49, LOW); // 27
-  
-  digitalWrite(50, LOW); // 28
-  digitalWrite(51, LOW); // 29
-  digitalWrite(52, LOW); // 30
-  digitalWrite(53, LOW); // 31
+  digitalWrite(46, LOW);  // 24
+  digitalWrite(47, LOW);  // 25
+  digitalWrite(48, LOW);  // 26
+  digitalWrite(49, LOW);  // 27
+
+  digitalWrite(50, LOW);  // 28
+  digitalWrite(51, LOW);  // 29
+  digitalWrite(52, LOW);  // 30
+  digitalWrite(53, LOW);  // 31
+}
+
+// pinMode(22-53, INPUT)
+void set_pin_in() {
+  pinMode(22, INPUT);
+  pinMode(23, INPUT);
+  pinMode(24, INPUT);
+  pinMode(25, INPUT);
+  pinMode(26, INPUT);
+  pinMode(27, INPUT);
+  pinMode(28, INPUT);
+  pinMode(29, INPUT);
+  pinMode(30, INPUT);
+  pinMode(31, INPUT);
+  pinMode(32, INPUT);
+  pinMode(33, INPUT);
+  pinMode(34, INPUT);
+  pinMode(35, INPUT);
+  pinMode(36, INPUT);
+  pinMode(37, INPUT);
+  pinMode(38, INPUT);
+  pinMode(39, INPUT);
+  pinMode(40, INPUT);
+  pinMode(41, INPUT);
+  pinMode(42, INPUT);
+  pinMode(42, INPUT);
+  pinMode(43, INPUT);
+  pinMode(44, INPUT);
+  pinMode(45, INPUT);
+  pinMode(46, INPUT);
+  pinMode(47, INPUT);
+  pinMode(48, INPUT);
+  pinMode(49, INPUT);
+  pinMode(50, INPUT);
+  pinMode(51, INPUT);
+  pinMode(52, INPUT);
+  pinMode(53, INPUT);
+}
+
+// pinMode(22-53, OUTPUT)
+void set_pin_out() {
+  pinMode(22, OUTPUT);
+  pinMode(23, OUTPUT);
+  pinMode(24, OUTPUT);
+  pinMode(25, OUTPUT);
+  pinMode(26, OUTPUT);
+  pinMode(27, OUTPUT);
+  pinMode(28, OUTPUT);
+  pinMode(29, OUTPUT);
+  pinMode(30, OUTPUT);
+  pinMode(31, OUTPUT);
+  pinMode(32, OUTPUT);
+  pinMode(33, OUTPUT);
+  pinMode(34, OUTPUT);
+  pinMode(35, OUTPUT);
+  pinMode(36, OUTPUT);
+  pinMode(37, OUTPUT);
+  pinMode(38, OUTPUT);
+  pinMode(39, OUTPUT);
+  pinMode(40, OUTPUT);
+  pinMode(41, OUTPUT);
+  pinMode(42, OUTPUT);
+  pinMode(42, OUTPUT);
+  pinMode(43, OUTPUT);
+  pinMode(44, OUTPUT);
+  pinMode(45, OUTPUT);
+  pinMode(46, OUTPUT);
+  pinMode(47, OUTPUT);
+  pinMode(48, OUTPUT);
+  pinMode(49, OUTPUT);
+  pinMode(50, OUTPUT);
+  pinMode(51, OUTPUT);
+  pinMode(52, OUTPUT);
+  pinMode(53, OUTPUT);
+}
+
+// read pin(22-53) value and convert it to decimal number
+int pin_to_num() {
+  int result = 0;
+  int arr[32] = {
+    0,
+  };
+  for (int i = 0; i < 32; i++) {
+    arr[i] = digitalRead(22 + i);
+    if (arr[i]) {
+      result += pow(2, i);
+    }
+  }
+
+  return result;
 }

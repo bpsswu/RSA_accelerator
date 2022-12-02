@@ -1,5 +1,5 @@
 Analysis & Synthesis report for from_arduino
-Thu Dec 01 02:46:25 2022
+Fri Dec 02 00:58:07 2022
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -13,9 +13,11 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Elapsed Time Per Partition
+ 11. Analysis & Synthesis Messages
+ 12. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -41,16 +43,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Dec 01 02:46:25 2022           ;
+; Analysis & Synthesis Status        ; Successful - Fri Dec 02 00:58:07 2022           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; from_arduino                                    ;
 ; Top-level Entity Name              ; from_arduino                                    ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 43                                              ;
-;     Total combinational functions  ; 11                                              ;
-;     Dedicated logic registers      ; 32                                              ;
-; Total registers                    ; 32                                              ;
-; Total pins                         ; 54                                              ;
+; Total logic elements               ; 168                                             ;
+;     Total combinational functions  ; 72                                              ;
+;     Dedicated logic registers      ; 131                                             ;
+; Total registers                    ; 131                                             ;
+; Total pins                         ; 58                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -168,28 +170,28 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 43    ;
+; Estimated Total logic elements              ; 168   ;
 ;                                             ;       ;
-; Total combinational functions               ; 11    ;
+; Total combinational functions               ; 72    ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 10    ;
-;     -- 3 input functions                    ; 0     ;
-;     -- <=2 input functions                  ; 1     ;
+;     -- 4 input functions                    ; 30    ;
+;     -- 3 input functions                    ; 38    ;
+;     -- <=2 input functions                  ; 4     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 11    ;
-;     -- arithmetic mode                      ; 0     ;
+;     -- normal mode                          ; 41    ;
+;     -- arithmetic mode                      ; 31    ;
 ;                                             ;       ;
-; Total registers                             ; 32    ;
-;     -- Dedicated logic registers            ; 32    ;
+; Total registers                             ; 131   ;
+;     -- Dedicated logic registers            ; 131   ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
-; I/O pins                                    ; 54    ;
+; I/O pins                                    ; 58    ;
 ; Embedded Multiplier 9-bit elements          ; 0     ;
 ; Maximum fan-out node                        ; rstn  ;
-; Maximum fan-out                             ; 33    ;
-; Total fan-out                               ; 157   ;
-; Average fan-out                             ; 1.62  ;
+; Maximum fan-out                             ; 132   ;
+; Total fan-out                               ; 849   ;
+; Average fan-out                             ; 3.25  ;
 +---------------------------------------------+-------+
 
 
@@ -198,9 +200,19 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |from_arduino              ; 11 (11)           ; 32 (32)      ; 0           ; 0            ; 0       ; 0         ; 54   ; 0            ; |from_arduino       ; work         ;
+; |from_arduino              ; 72 (72)           ; 131 (131)    ; 0           ; 0            ; 0       ; 0         ; 58   ; 0            ; |from_arduino       ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; counter[3]                            ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 1 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -208,12 +220,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 32    ;
+; Total registers                              ; 131   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 32    ;
+; Number of registers using Asynchronous Clear ; 131   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 128   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -233,25 +245,56 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Thu Dec 01 02:46:24 2022
+    Info: Processing started: Fri Dec 02 00:58:06 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off from_arduino -c from_arduino
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file from_arduino.v
     Info (12023): Found entity 1: from_arduino
 Info (12127): Elaborating entity "from_arduino" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at from_arduino.v(16): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at from_arduino.v(20): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at from_arduino.v(21): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at from_arduino.v(22): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at from_arduino.v(35): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at from_arduino.v(39): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at from_arduino.v(43): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at from_arduino.v(47): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at from_arduino.v(51): truncated value with size 32 to match size of target (4)
+Warning (18029): Output pin "data_out_led[0]" driven by bidirectional pin "data[0]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[1]" driven by bidirectional pin "data[1]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[2]" driven by bidirectional pin "data[2]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[3]" driven by bidirectional pin "data[3]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[4]" driven by bidirectional pin "data[4]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[5]" driven by bidirectional pin "data[5]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[6]" driven by bidirectional pin "data[6]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[7]" driven by bidirectional pin "data[7]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[8]" driven by bidirectional pin "data[8]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[9]" driven by bidirectional pin "data[9]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[10]" driven by bidirectional pin "data[10]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[11]" driven by bidirectional pin "data[11]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[12]" driven by bidirectional pin "data[12]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[13]" driven by bidirectional pin "data[13]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[14]" driven by bidirectional pin "data[14]" cannot be tri-stated
+Warning (18029): Output pin "data_out_led[15]" driven by bidirectional pin "data[15]" cannot be tri-stated
+Info (144001): Generated suppressed messages file C:/Users/bpssw/Desktop/Quartus-II/from_arduino/output_files/from_arduino.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "clk"
-Info (21057): Implemented 97 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 35 input pins
-    Info (21059): Implemented 19 output pins
-    Info (21061): Implemented 43 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 4604 megabytes
-    Info: Processing ended: Thu Dec 01 02:46:25 2022
+Info (21057): Implemented 226 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 22 output pins
+    Info (21060): Implemented 32 bidirectional pins
+    Info (21061): Implemented 168 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 27 warnings
+    Info: Peak virtual memory: 4599 megabytes
+    Info: Processing ended: Fri Dec 02 00:58:07 2022
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:00
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/bpssw/Desktop/Quartus-II/from_arduino/output_files/from_arduino.map.smsg.
 
 
