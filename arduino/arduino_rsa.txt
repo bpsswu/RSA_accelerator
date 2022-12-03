@@ -1,18 +1,22 @@
-#define IDLE 0
-#define SET_BASE 1
-#define SET_EXP 2
-#define SET_N 3
-#define GET_R 4
+#define IDLE      0
+#define SET_BASE  1
+#define SET_EXP   2
+#define SET_N     3
+#define GET_R     4
 
-#define END 18
-#define RST 19
-#define OE 20
-#define WRITE 21
+#define END       18
+#define RST       19
+#define OE        20
+#define WRITE     21
 
-int state = IDLE;
-int flag = 0;
+int state   = IDLE;
+int flag    = 0;
 int rsa_end = 0;
-char ch = 0;
+char ch     = 0;
+unsigned long start_time  = 0;
+unsigned long end_time    = 0;
+unsigned long exec_time   = 0;
+
 
 void setup() {
   pinMode(END, INPUT);
@@ -56,9 +60,6 @@ void setup() {
   Serial.begin(9600);
 
   digitalWrite(RST, HIGH);
-  // digitalWrite(RST, LOW);
-  // delay(1000);
-  // digitalWrite(RST, HIGH);
 
   Serial.println("Enter setup Loop");
   while (ch != 's') {
@@ -66,7 +67,7 @@ void setup() {
     if (ch == 'r') {
     Serial.println("reset");
     digitalWrite(RST, LOW);
-    delay(500);
+    //delay(1);
     digitalWrite(RST, HIGH);
   }
   }
@@ -79,20 +80,18 @@ void loop() {
   if (ch == 'r') {
     Serial.println("reset");
     digitalWrite(RST, LOW);
-    delay(500);
+    //delay(1);
     digitalWrite(RST, HIGH);
   }
 
   if (state == IDLE) {
     if (!flag) {
-      //digitalWrite(RST, LOW);
-      //digitalWrite(RST, HIGH);
       Serial.println("[32bit RSA program]");
       Serial.println("Message : 0x032178C4");
       Serial.println("encryption start");
 
       // START TIME MEASUREMENT
-
+      start_time = millis();
       state = SET_BASE;
       flag++;
       set_pin_out();
@@ -101,23 +100,23 @@ void loop() {
   } else if (state == SET_BASE) {
     state = SET_EXP;
     set_h0321_78C4();
-    delay(500);
+    //delay(1);
     write_to_FPGA();
-    delay(500);
+    //delay(1);
     Serial.println("set base");
   } else if (state == SET_EXP) {
     state = SET_N;
     set_h0000_0011();
-    delay(500);
+    //delay(1);
     write_to_FPGA();
-    delay(500);
+    //delay(1);
     Serial.println("set exponent");
   } else if (state == SET_N) {
     state = GET_R;
     set_h07A5_0679();
-    delay(500);
+    //delay(1);
     write_to_FPGA();
-    delay(500);
+    //delay(1);
     Serial.println("set modulus");
   } else if (state == GET_R) {
     state = IDLE;
@@ -134,6 +133,15 @@ void loop() {
     Serial.print("Cipher Text : ");
     Serial.print("0x");
     Serial.println(pin_to_num(), HEX);
+    
+    end_time = millis();
+    exec_time = end_time - start_time;
+    Serial.print("start time : ");
+    Serial.println(start_time);
+    Serial.print("end time : ");
+    Serial.println(end_time);
+    Serial.print("time taken : ");
+    Serial.println(exec_time);
     //digitalWrite(OE, LOW);
 
     // END TIME MEASUREMENT
@@ -142,7 +150,7 @@ void loop() {
 
 void write_to_FPGA() {
   digitalWrite(WRITE, HIGH);
-  delay(500);
+  //delay(1);
   digitalWrite(WRITE, LOW);
 }
 

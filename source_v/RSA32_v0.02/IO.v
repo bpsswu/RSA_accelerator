@@ -50,20 +50,17 @@ always @ (posedge write_p or negedge rstn) begin
 	else begin
 		if (counter_1 == 0) begin
 			counter_1 <= counter_1 + 1;
+			base <= data;
 		end
 		else if (counter_1 == 1) begin
-			base <= data;
 			counter_1 <= counter_1 + 1;
+			exponent <= data;
 		end
 		else if (counter_1 == 2) begin
-			exponent <= data;
 			counter_1 <= counter_1 + 1;
+			modulus <= data;
 		end
 		else if (counter_1 == 3) begin
-			modulus <= data;
-			counter_1 <= counter_1 + 1;
-		end
-		else if (counter_1 == 4) begin
 			counter_1 <= counter_1 + 1;
 		end
 	end
@@ -77,7 +74,7 @@ always @ (posedge clk or negedge rstn) begin
 		result		<= 0;
 	end
 	else begin
-		if (counter_1 == 5 && counter_2 == 0) begin
+		if (counter_1 == 4 && counter_2 == 0) begin
 			rsa_start <= 1;
 			counter_2 <= counter_2 + 1;
 		end
