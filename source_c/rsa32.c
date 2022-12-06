@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <math.h>
 #include <stdbool.h>
+#include <sys/time.h>
 
 uint64_t RL_binary(uint64_t base, uint64_t exp, uint64_t N);
 int get_length(uint64_t input);
@@ -10,8 +11,7 @@ bool masking(uint64_t input, int n);
 uint64_t long_div(uint64_t Msg, uint64_t N, int len);
 uint64_t mod_exp(uint64_t A, uint64_t B, uint64_t N, int len);
 uint64_t MM(uint64_t A, uint64_t B, uint64_t N, int len);
-
-static int loop_cnt = 0;
+long getMicrotime();
 
 int main()
 {
@@ -20,17 +20,26 @@ int main()
     e = 17;
     d = 75431153;
     M = 52525252;
+	
+	long start_time = 0;
+	long end_time	= 0;
 
     printf("Input message = %lu\n", M);
     
+	start_time = getMicrotime();
     C = RL_binary(M, e, N);
-    printf("Cipher_text   = %lu\n", C);
-    
-    M = RL_binary(C, d, N);
-    printf("Plain_text    = %lu\n", M);
+	end_time = getMicrotime();
 
-	printf("while loop count(MM) : %d\n", loop_cnt);
-	
+    printf("Cipher_text   = %lu\n", C);
+	printf("encryption time = %ldus\n", end_time - start_time);
+    
+	start_time = getMicrotime();
+    M = RL_binary(C, d, N);
+	end_time = getMicrotime();
+
+    printf("Plain_text    = %lu\n", M);
+	printf("decryption time = %ldus\n", end_time - start_time);
+
     return 0;
 }
 
@@ -137,7 +146,12 @@ uint64_t MM(uint64_t A, uint64_t B, uint64_t N, int len)
     while (Z > N)
 	{
         Z -= N; 
-		loop_cnt++;     
     }
     return Z;
+}
+
+long getMicrotime(){
+	struct timeval currentTime;
+	gettimeofday(&currentTime, NULL);
+	return currentTime.tv_sec * (int)1e6 + currentTime.tv_usec;
 }
