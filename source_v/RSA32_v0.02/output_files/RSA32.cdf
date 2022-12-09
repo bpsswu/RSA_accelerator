@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP2C35F672) Path("C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/output_files/") File("RSA32.sof") MfrSpec(OpMask(1));
+		Device PartName(EP2C35F672) Path("C:/Users/bpssw/Desktop/RSA32_v0.02/output_files/") File("RSA32.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

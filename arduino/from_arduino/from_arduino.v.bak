@@ -1,7 +1,0 @@
-module from_arduino (
-	clk, rstn, data, save,
-	comp);
-	
-input clk, rstn, save;
-input [31:0] data;
-output comp;

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RSA32
-Fri Dec 02 20:50:11 2022
+Thu Dec 08 02:34:45 2022
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -69,7 +69,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Dec 02 20:50:11 2022           ;
+; Analysis & Synthesis Status        ; Successful - Thu Dec 08 02:34:45 2022           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; RSA32                                           ;
 ; Top-level Entity Name              ; IO                                              ;
@@ -182,34 +182,34 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                           ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                       ; Library ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------+---------+
-; RL_binary.v                      ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/RL_binary.v                ;         ;
-; mont_mult.v                      ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/mont_mult.v                ;         ;
-; mod_exp.v                        ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/mod_exp.v                  ;         ;
-; ltp.v                            ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/ltp.v                      ;         ;
-; long_div.v                       ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/long_div.v                 ;         ;
-; IO.v                             ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/IO.v                       ;         ;
-; get_length.v                     ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/get_length.v               ;         ;
-; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_divide.tdf                   ;         ;
-; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/abs_divider.inc                  ;         ;
-; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/sign_div_unsign.inc              ;         ;
-; aglobal130.inc                   ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                   ;         ;
-; db/lpm_divide_25m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/db/lpm_divide_25m.tdf      ;         ;
-; db/sign_div_unsign_9kh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/db/sign_div_unsign_9kh.tdf ;         ;
-; db/alt_u_div_kve.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/db/alt_u_div_kve.tdf       ;         ;
-; db/add_sub_lkc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/db/add_sub_lkc.tdf         ;         ;
-; db/add_sub_mkc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/db/add_sub_mkc.tdf         ;         ;
-; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mult.tdf                     ;         ;
-; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_add_sub.inc                  ;         ;
-; multcore.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/multcore.inc                     ;         ;
-; bypassff.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/bypassff.inc                     ;         ;
-; altshift.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altshift.inc                     ;         ;
-; db/mult_l8t.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/db/mult_l8t.tdf            ;         ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                              ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                          ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------+---------+
+; RL_binary.v                      ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA32_v0.02/RL_binary.v                        ;         ;
+; mont_mult.v                      ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA32_v0.02/mont_mult.v                        ;         ;
+; mod_exp.v                        ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA32_v0.02/mod_exp.v                          ;         ;
+; ltp.v                            ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA32_v0.02/ltp.v                              ;         ;
+; long_div.v                       ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA32_v0.02/long_div.v                         ;         ;
+; IO.v                             ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA32_v0.02/IO.v                               ;         ;
+; get_length.v                     ; yes             ; User Verilog HDL File        ; C:/Users/bpssw/Desktop/RSA32_v0.02/get_length.v                       ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal130.inc                   ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc      ;         ;
+; db/lpm_divide_25m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA32_v0.02/db/lpm_divide_25m.tdf              ;         ;
+; db/sign_div_unsign_9kh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA32_v0.02/db/sign_div_unsign_9kh.tdf         ;         ;
+; db/alt_u_div_kve.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA32_v0.02/db/alt_u_div_kve.tdf               ;         ;
+; db/add_sub_lkc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA32_v0.02/db/add_sub_lkc.tdf                 ;         ;
+; db/add_sub_mkc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA32_v0.02/db/add_sub_mkc.tdf                 ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_mult.tdf        ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/lpm_add_sub.inc     ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/multcore.inc        ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/bypassff.inc        ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altshift.inc        ;         ;
+; db/mult_l8t.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/bpssw/Desktop/RSA32_v0.02/db/mult_l8t.tdf                    ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -939,7 +939,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:05     ;
+; Top            ; 00:00:12     ;
 +----------------+--------------+
 
 
@@ -949,7 +949,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri Dec 02 20:50:04 2022
+    Info: Processing started: Thu Dec 08 02:34:29 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RSA32 -c RSA32
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file rl_binary.v
@@ -1042,7 +1042,7 @@ Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal 
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "counter_1[3]" is stuck at GND
 Info (17049): 47 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/output_files/RSA32.map.smsg
+Info (144001): Generated suppressed messages file C:/Users/bpssw/Desktop/RSA32_v0.02/output_files/RSA32.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Info (21057): Implemented 3608 device resources after synthesis - the final resource count might be different
@@ -1052,15 +1052,15 @@ Info (21057): Implemented 3608 device resources after synthesis - the final reso
     Info (21061): Implemented 3536 logic cells
     Info (21062): Implemented 24 DSP elements
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 26 warnings
-    Info: Peak virtual memory: 4621 megabytes
-    Info: Processing ended: Fri Dec 02 20:50:11 2022
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Peak virtual memory: 4617 megabytes
+    Info: Processing ended: Thu Dec 08 02:34:45 2022
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:11
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/bpssw/Desktop/RSA_verilog/source_v/RSA32_v0.02/output_files/RSA32.map.smsg.
+The suppressed messages can be found in C:/Users/bpssw/Desktop/RSA32_v0.02/output_files/RSA32.map.smsg.
 
 

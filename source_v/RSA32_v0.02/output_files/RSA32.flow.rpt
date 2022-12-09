@@ -1,5 +1,5 @@
 Flow report for RSA32
-Fri Dec 02 20:50:53 2022
+Thu Dec 08 02:35:44 2022
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Fri Dec 02 20:50:53 2022           ;
+; Flow Status                        ; Successful - Thu Dec 08 02:35:44 2022           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; RSA32                                           ;
 ; Top-level Entity Name              ; IO                                              ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/02/2022 20:50:04 ;
+; Start date & time ; 12/08/2022 02:34:30 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; RSA32               ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +--------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                      ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +--------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 132693160525202.166998180419732       ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                ; 4929745263533.167043447002428         ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                    ; --            ; --          ; IO_tb          ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; IO_tb                                 ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                           ; --            ; --          ; eda_simulation ;
@@ -102,12 +102,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:07     ; 1.0                     ; 4610 MB             ; 00:00:03                           ;
-; Fitter                    ; 00:00:33     ; 1.0                     ; 4918 MB             ; 00:00:15                           ;
-; Assembler                 ; 00:00:01     ; 1.0                     ; 4582 MB             ; 00:00:00                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; 4594 MB             ; 00:00:01                           ;
-; EDA Netlist Writer        ; 00:00:01     ; 1.0                     ; 4562 MB             ; 00:00:01                           ;
-; Total                     ; 00:00:44     ; --                      ; --                  ; 00:00:20                           ;
+; Analysis & Synthesis      ; 00:00:15     ; 1.0                     ; 4614 MB             ; 00:00:10                           ;
+; Fitter                    ; 00:00:44     ; 1.0                     ; 4923 MB             ; 00:00:34                           ;
+; Assembler                 ; 00:00:03     ; 1.0                     ; 4574 MB             ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 4596 MB             ; 00:00:02                           ;
+; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; 4562 MB             ; 00:00:02                           ;
+; Total                     ; 00:01:08     ; --                      ; --                  ; 00:00:50                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -116,11 +116,11 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; BSW_GRAM         ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; BSW_GRAM         ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; BSW_GRAM         ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; BSW_GRAM         ; Windows 7 ; 6.2        ; x86_64         ;
-; EDA Netlist Writer        ; BSW_GRAM         ; Windows 7 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; BSW_TP           ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; BSW_TP           ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; BSW_TP           ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; BSW_TP           ; Windows 7 ; 6.2        ; x86_64         ;
+; EDA Netlist Writer        ; BSW_TP           ; Windows 7 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 

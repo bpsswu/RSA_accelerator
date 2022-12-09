@@ -1,5 +1,0 @@
-set tool_name "QuestaSim (Verilog)"
-set corner_file_list {
-	{{"Slow Model"} {RSA32.vo RSA32_v.sdo}}
-	{{"Fast Model"} {RSA32_fast.vo RSA32_v_fast.sdo}}
-}
