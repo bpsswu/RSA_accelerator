@@ -1,18 +1,32 @@
-# RSA C & Verilog
+# RSA accelerator
 
-## Project Introduction
-
+## About this project
+### Description
+- The RSA encryption module is implemented on the FPGA board using Verilog
+- Connect the FPGA board and the Arduino board to use the FPGA board as an accelerator
+### Algorithm used
+- RL binary method
+- Montgomery Modular Multiplication
+- Long division
+### Accelerator Verilog Structure
+![image](https://user-images.githubusercontent.com/101001675/209766791-ce49cfd6-bf10-4492-b6fa-c9578989049e.png)
+### Connection structure between Arduino and accelerator
+![image](https://user-images.githubusercontent.com/101001675/209767462-4be4ac3f-62f9-4add-a246-006269322da3.png)
+### Data transmission method between Arduino and accelerator
+![image](https://user-images.githubusercontent.com/101001675/209767532-7ddb298d-038f-4a29-a605-afe25793fca6.png)
 
 ## Directory Structure
 - /source_c
-    - d
+    - Implementing RSA in C language
+    - Implemented up to 32bit and 2048bit
 - /source_v
-    - d
+    - Implementing RSA in verilog
+    - Implemented up to 32bit
 - /source_arduino
-    - d
+    - Running rsa-32 on Arduino itself
+    - Running rsa-32 with an accelerator
 
 ## cf.
-- openssl docs : https://www.openssl.org/docs/manpages.html
 
 ## Contributors
 
