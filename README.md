@@ -26,7 +26,6 @@
     - Running rsa-32 on Arduino itself
     - Running rsa-32 with an accelerator
 
-## cf.
 
 ## Contributors
 
