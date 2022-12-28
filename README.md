@@ -1,21 +1,32 @@
-# RSA_verilog
-## RSA Acclerator
+# RSA C & Verilog
 
-1. /source_arduino : source code for arduino
-![image](https://user-images.githubusercontent.com/101001675/206640384-e11297c9-4b48-4627-b572-172130ee7b79.png)
+## Project Introduction
 
-rsa32_arduino.txt : 32bit rsa encryption/decryption program using only resources of arduino board
-rsa32_arduino_w_fpga.txt : 32bit rsa encryption/decryption program using accelerator
 
-2. /source_c : C source code for rsa enc/dec program
+## Directory Structure
+- /source_c
+    - d
+- /source_v
+    - d
+- /source_arduino
+    - 
 
-rsa32.c : 32bit rsa encryption/decryption program 
-rsa32.c : 2048bit rsa encryption/decryption program 
+## cf.
+- openssl docs : https://www.openssl.org/docs/manpages.html
 
-3. /source_v : verilog for rsa enc/dec
+## Contributors
 
-RSA32_v0.02 : Altera Quartus II web edition Project
-![image](https://user-images.githubusercontent.com/101001675/206641122-fe353b32-399b-4a9e-a36e-c7cf88cecc38.png)
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/sirkang1208"><img src="https://avatars.githubusercontent.com/u/104350527?v=4" width="100px;" alt=""/><br /><sub><b>sirkang1208</b></sub></a></td>
+    <td align="center"><a href="https://github.com/bpsswu"><img src="https://avatars.githubusercontent.com/u/101001675?v=4" width="100px;" alt=""/><br /><sub><b>bpsswu</b></sub></a></td>
+  </tr>
+</table>
 
-## collaborator
-강기봉 문승현 백승욱
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
