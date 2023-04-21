@@ -1,13 +1,15 @@
 /*
 	module name 	: mod_exp
 	@ input			: num_a, num_b, modulus
-	@ output		: me_out
-	@ description	: me_out = (num_a * num_b) % modulus
+	@ output		: mm_2_out
+	@ description	: mm_2_out = (num_a * num_b) % modulus
 */
 module mod_exp(
 	clk, rstn, md_start, len, num_a, num_b, modulus,
 	mm_2_out, mm_2_end);
-
+// md_start = trigger signal to start the mod_exp module
+// len = length of N (modulus)
+// mm_2_end = Signal notifying the termination of the mod_exp module
 
 input clk, rstn, md_start;
 input [7:0] len;
