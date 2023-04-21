@@ -2,7 +2,7 @@
 	module name 	: RL_binary
 	@ input			: base, exp, modulus
 	@ output		: r
-	@ description	: r = (base ** exp) % modulus
+	@ description	: r = (base ^ exp) % modulus
 */
 module RL_binary(
 	clk, rstn, md_start, base, exp, modulus,
@@ -27,8 +27,6 @@ reg [7:0] i;
 reg not_hp;
 
 assign md_end = (i == 32) && me_2_end;
-
-
 
 get_length gl_RL (
 	clk, rstn, md_start, {32'b0, modulus}, 
