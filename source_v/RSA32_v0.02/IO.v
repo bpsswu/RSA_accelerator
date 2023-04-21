@@ -56,7 +56,7 @@ always @ (posedge write_p or negedge rstn) begin
 	end
 end
 
-
+// Indicates the start and end of an RSA operation.
 always @ (posedge clk or negedge rstn) begin
 	if (!rstn) begin
 		rsa_start	<= 0;
