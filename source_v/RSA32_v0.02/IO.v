@@ -2,7 +2,7 @@
 	module name 	: IO
 	@ input			: rstn, write, oe, data
 	@ output		: data
-	@ description	: encryption test
+	@ description	: Interface module with Arduino Mega board
 */
 module IO(
 	clk, rstn, write, oe, data,
