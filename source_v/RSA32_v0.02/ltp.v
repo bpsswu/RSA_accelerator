@@ -1,7 +1,7 @@
 /*
 	module name 	: ltp
 	@ input			: ltp_in (level signal)
-	@ output		: ltp_out (pulse_signal
+	@ output		: ltp_out (pulse_signal)
 	@ description	: level to pulse converter (moore fsm)
 */
 module ltp(
