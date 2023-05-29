@@ -1,7 +1,7 @@
 /*
 	module name 	: IO
 	@ input			: rstn, write, oe, data
-	@ output		: data
+	@ output		: IO_end, data
 	@ description	: Interface module with Arduino Mega board
 */
 module IO(
