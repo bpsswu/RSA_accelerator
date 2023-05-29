@@ -6,12 +6,11 @@
 */
 module IO(
 	clk, rstn, write, oe, data,
-	IO_end, counter_1);
+	IO_end);
 	
 input clk, rstn, write, oe;
 inout [31:0] data;
 output reg IO_end;
-output [3:0] counter_1;
 
 assign data = oe ? result : 32'bz;
 
